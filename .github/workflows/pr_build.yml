@@ -12,6 +12,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      UPLOAD_PR_ARTIFACTS: true
     steps:
       - name: Git Checkout
         uses: actions/checkout@v4
