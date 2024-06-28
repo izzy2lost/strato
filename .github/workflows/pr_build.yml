@@ -2,9 +2,7 @@
 name: PR Build
 
 on:
-  pull_request:
-    types: [ opened, synchronize, reopened ]
-    branches: [ master ]
+  workflow_dispatch:
 
 # Only allow the latest build to run for a given PR, and cancel any previous builds
 concurrency:
@@ -14,6 +12,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      UPLOAD_PR_ARTIFACTS: true
     steps:
       - name: Git Checkout
         uses: actions/checkout@v4
